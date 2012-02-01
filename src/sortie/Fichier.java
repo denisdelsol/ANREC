@@ -3,6 +3,9 @@ package sortie;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedList;
+
+import kMeans.Point;
 
 /**
  * Permet de sortir les données dans un fichier texte
@@ -14,20 +17,25 @@ public class Fichier {
 	
 	BufferedWriter output;
 	
-	public Fichier(){
+	public Fichier(LinkedList<Point> listePoint){
 		try {
 			FileWriter fw = new FileWriter("resultat.txt", true);
 			output = new BufferedWriter(fw);
+			for (Point point : listePoint){
+				ecrire(point.getCoord());
+			}
 			
 		} catch (IOException ie){
 			ie.getMessage();
 		}
 	}
 	
-	public void ecrire(String donnee){
+	private void ecrire(Float[] donnee){
 		try {
-		output.write(donnee);
-		output.flush();
+			for (int i  =0; i< donnee.length; i++){
+				output.write(String.valueOf(donnee[i])+" ");
+			}
+			output.flush();
 		} catch (IOException io){
 			io.getMessage();
 		}

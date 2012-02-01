@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
+import sortie.Fichier;
 import sortie.Graphe;
 import distance.Distance;
 
@@ -99,7 +100,8 @@ public class KMeans {
 						pointList.remove(minI);	
 					}
 					// la pointlist est une liste de points représentant les k clusters
-		
+					
+					Fichier fichier = new Fichier(pointList);
 	}
 
 	/**
